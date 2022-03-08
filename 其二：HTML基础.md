@@ -287,16 +287,99 @@ X<sub>3</sub>
 ```
 
 #### 4. 超链接
-##### 1. 外部链接：链接到外部文件
+#####  外部链接：链接到外部文件
 ```html
 <a href="https://georgel.icu/">欢迎查看我的文章</a>
 ```
 a是英语`anchor`“锚”的意思，就好像这个页面往另一个页面扔出了一个锚。是一个文本级的标签。
 href（hypertext reference）：超文本地址。
 
-##### 2. 锚链接
+#####  锚链接
 给超链接起一个名字，作用是**在本页面或者其他页面的的不同位置进行跳转**。最常见的如，在网页底部有一个向上箭头，点击箭头后回到顶部，这个就可以利用锚链接。
+代码：
+```html
+<body>
+	<h3>我是三级标题<h3>
+	<a name="name1">这里是顶部</a>
+	<pre>
+	
+	</pre>
+	<a href="#name1">回到顶部</a>
+</body>
+```
+注意：顶部这个锚的名字叫做name1。 然后在底部设置超链接，点击时将回到顶部（此时，网页中的url的末尾也出现了`#name1`）。注意**上图中红框部分的`#`号不要忘记了**，表示跳到名为name1的特定位置，这是规定。如果少了`#`号，点击之后，就会跳到name1这个文件或者name1这个文件夹中去。
 
+#### 5. 超链接的属性
+超链接有如下属性值可以选择使用：
+-   `href`：目标URL
+-   `title`：悬停文本。
+-   `name`：主要用于设置一个锚点的名称。
+-   `target`：告诉浏览器用什么方式来打开目标页面。`target`属性有以下几个值：
+	- `_self`：在同一个网页中显示（默认值）
+    - `_blank`：在新的窗口中打开。
+    - `_parent`：在父窗口中显示
+    - `_top`：在顶级窗口中显示
 
+---
 
 ### 3. 图片标签
+
+网页中的图片也是网页重要的组成部分。如果要想在网页中显示图像，就可以使用img 标签，它是一个单标签。语法为
+```html
+<img src="https://qiaozhi94.oss-cn-beijing.aliyuncs.com/myblog/Marx_Lenin_clipart.svg" />
+```
+- 基本大部分的图片格式都可以直接插入，如jpg，gif，png，svg等等
+- HTML页面不是直接插入图片，而是插入图片的引用地址，所以要先把图片上传到服务器上，也即是图床。
+
+#### 1. img标签的属性
+#####  `src`属性
+`src`属性是指图片的路径，根据来源可以分为相对路径和绝对路径两类。
+- 相对路径指的是相对当前页面所在的路径。两个标记 `.` 和 `..` 分表代表当前目录和上一层目录。代码：
+```html
+<!-- 当前目录中的图片 -->
+<img src="2.jpg">
+<img src=".\2.jpg">
+
+<!-- 上一级目录中的图片 -->
+<img src="..\2.jpg">
+
+<!-- 并列文件夹images下的图片 -->
+<img src="images/1.jpg">
+```
+- 绝对路径指的是以盘符开始的绝对路径或网络路径，代码：
+```html
+<img src="C:\Users\qianguyihao\Desktop\html\images\1.jpg">
+<img src="https://qiaozhi94.oss-cn-beijing.aliyuncs.com/myblog/Marx_Lenin_clipart.svg">
+
+```
+**注意：**
+关于正反斜杠的使用，在windows系统中，反斜杠`\`用来表示文件目录；正斜杠`/`用来表示网址和url地址。
+
+##### `width`和`height`属性
+-   `width`：图像的宽度。
+-   `height`：图像的高度。
+width和height，在 HTML5 中的单位是 CSS 像素，在 HTML 4 中既可以是像素，也可以是百分比。**注意**：如果要想保证图片等比例缩放，请只设置width和height中其中一个。
+
+##### `Alt`属性
+-   `alt`：当图片不可用（无法显示）的时候，代替图片显示的内容。alt是英语 alternate “替代”的意思，代表替换资源。
+
+##### `title`属性
+-   `title`：**提示性文本**。鼠标悬停时出现的文本。
+
+##### `align`属性
+-   `align`：**图片和周围文字的相对位置**。属性取值可以是：bottom（默认）、center、top、left、right。
+具体有如下效果：
+1. `align=""`，图片和文字底端对齐。
+2. `align="center"`：图片和文字水平方向上居中对齐。
+3. `align="top"`：图片与文字顶端对齐。
+4. `align="left"`：图片在文字的左边。
+5. `align="right"`：图片在文字的右边。
+可以使用如下代码在vscode中查看效果：
+```html
+<body>
+    <h3>我是三级标题<h3>
+            <img src="https://qiaozhi94.oss-cn-beijing.aliyuncs.com/myblog/Marx_Lenin_clipart.svg" align="">
+
+</body>
+```
+
